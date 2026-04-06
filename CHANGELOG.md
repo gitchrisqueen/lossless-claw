@@ -1,5 +1,11 @@
 # @martian-engineering/lossless-claw
 
+## 0.6.4
+
+### Patch Changes
+
+- [#300](https://github.com/Martian-Engineering/lossless-claw/pull/300) [`a42f422`](https://github.com/Martian-Engineering/lossless-claw/commit/a42f422c1bc6c386c31e098d0b865dd3fedcbe9f) Thanks [@jalehman](https://github.com/jalehman)! - Fix `lcm-tui` Telegram topic session lookups so topic-backed sessions show the correct conversation metadata, summary counts, and file counts when browsing session keys.
+
 ## 0.6.3
 
 ### Patch Changes
