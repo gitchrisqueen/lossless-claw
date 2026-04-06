@@ -24,7 +24,7 @@ Summaries are lossy by design. The "Expand for details about:" footer at the end
 - Tool call sequences and their outputs
 - Verbatim quotes or specific data points
 
-`lcm_expand_query` is bounded (~120s, scoped sub-agent) and relatively cheap. Don't ration it.
+`lcm_expand_query` is bounded (~120s, scoped sub-agent) and relatively cheap. Don't ration it, but use `lcm_grep` first when you need broad discovery across many sessions.
 
 ## Tool reference
 
@@ -108,6 +108,8 @@ lcm_describe(id: "file_789abc012345")
 
 Answer a focused question by expanding summaries through the DAG. Spawns a bounded sub-agent that walks parent links down to source material and returns a compact answer.
 
+When `allConversations: true` is set, `lcm_expand_query` can now synthesize one answer across multiple conversations. That cross-conversation mode is bounded, not exhaustive: it ranks conversation buckets, expands only the top few, and marks the result truncated when lower-ranked buckets are skipped or fail.
+
 **Parameters:**
 
 | Param | Type | Required | Default | Description |
@@ -124,9 +126,11 @@ Answer a focused question by expanding summaries through the DAG. Spawns a bound
 **Returns:**
 - `answer` — The focused answer text
 - `citedIds` — Summary IDs that contributed to the answer
+- `sourceConversationIds` — Conversations that were successfully expanded
 - `expandedSummaryCount` — How many summaries were expanded
 - `totalSourceTokens` — Total tokens read from the DAG
 - `truncated` — Whether the answer was truncated to fit maxTokens
+- `conversationBreakdown` — Optional per-conversation success/failure diagnostics for bounded multi-conversation runs
 
 **Examples:**
 
@@ -143,7 +147,7 @@ lcm_expand_query(
   prompt: "What were the exact file changes?"
 )
 
-# Cross-conversation search
+# Cross-conversation synthesis
 lcm_expand_query(
   query: "deployment procedure",
   prompt: "What's the current deployment process?",
@@ -169,7 +173,7 @@ Add instructions to your agent's system prompt so it knows when to use LCM tools
 Use LCM tools for recall:
 1. `lcm_grep` — Search all conversations by keyword/regex
 2. `lcm_describe` — Inspect a specific summary (cheap, no sub-agent)
-3. `lcm_expand_query` — Deep recall with sub-agent expansion
+3. `lcm_expand_query` — Deep recall with bounded sub-agent expansion
 
 When summaries in context have an "Expand for details about:" footer
 listing something you need, use `lcm_expand_query` to get the full detail.
@@ -177,7 +181,7 @@ listing something you need, use `lcm_expand_query` to get the full detail.
 
 ### Conversation scoping
 
-By default, tools operate on the current conversation. Use `allConversations: true` to search across all of them (all agents, all sessions). Use `conversationId` to target a specific conversation you already know about (from previous grep results).
+By default, tools operate on the current conversation. Use `lcm_grep(..., allConversations: true)` when you need broad global discovery. Use `lcm_expand_query(..., allConversations: true)` when you want bounded synthesis across sessions. Use `conversationId` when you already know the exact conversation to inspect or expand.
 
 ### Performance considerations
 
@@ -185,3 +189,4 @@ By default, tools operate on the current conversation. Use `allConversations: tr
 - `lcm_expand_query` spawns a sub-agent and takes ~30–120 seconds
 - The sub-agent has a 120-second timeout with cleanup guarantees
 - Token caps (`LCM_MAX_EXPAND_TOKENS`) prevent runaway expansion
+- Cross-conversation `lcm_expand_query` expands only a bounded set of top-ranked conversations

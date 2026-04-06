@@ -190,3 +190,27 @@
 {"type":"dep_add","timestamp":"2026-03-23T13:58:12.419692Z","issue_id":"lossless-claw-047","payload":{"dep_type":"blocks","depends_on":"lossless-claw-047.2"}}
 {"type":"close","timestamp":"2026-03-23T13:59:37.416092Z","issue_id":"lossless-claw-047.2","payload":{}}
 {"type":"close","timestamp":"2026-03-23T13:59:41.819942Z","issue_id":"lossless-claw-047","payload":{}}
+{"type":"create","timestamp":"2026-04-06T14:14:59.359614Z","issue_id":"lossless-claw-386","payload":{"description":"Implement the Phase 1 behavior from specs/lcm-expand-query-all-summaries.md so lcm_expand_query can discover summaries across all conversations, expand a bounded set of conversation buckets sequentially, and return one merged answer with plural conversation diagnostics.","priority":"1","title":"Enable multi-conversation lcm_expand_query synthesis","type":"epic"}}
+{"type":"create","timestamp":"2026-04-06T14:15:06.645371Z","issue_id":"lossless-claw-19e","payload":{"description":"Replace single-conversation collapse in src/tools/lcm-expand-query-tool.ts with conversation bucket grouping, deterministic ranking, sequential delegated expansion, merged response fields, and focused tool tests for the happy path.","priority":"1","title":"Implement bounded multi-conversation lcm_expand_query orchestration","type":"task"}}
+{"type":"create","timestamp":"2026-04-06T14:15:06.645372Z","issue_id":"lossless-claw-d71","payload":{"description":"Update docs/agent-tools.md and src/plugin/index.ts to explain that lcm_expand_query(allConversations: true) performs bounded multi-conversation synthesis, while lcm_grep remains the cheaper global discovery tool.","priority":"2","title":"Document bounded cross-conversation expand_query guidance","type":"task"}}
+{"type":"create","timestamp":"2026-04-06T14:15:06.645658Z","issue_id":"lossless-claw-332","payload":{"description":"Add regression coverage for bucket caps, partial success, timeout/error handling, and token-budget truncation behavior in test/lcm-expand-query-tool.test.ts after the multi-conversation runner lands.","priority":"1","title":"Cover multi-conversation partial-failure and budget limits","type":"task"}}
+{"type":"create","timestamp":"2026-04-06T14:15:11.311416Z","issue_id":"lossless-claw-87a","payload":{"description":"Add regression coverage for bucket caps, partial success, timeout/error handling, and token-budget truncation behavior in test/lcm-expand-query-tool.test.ts after the multi-conversation runner lands.","priority":"1","title":"Cover multi-conversation partial-failure and budget limits","type":"task"}}
+{"type":"create","timestamp":"2026-04-06T14:15:14.270062Z","issue_id":"lossless-claw-fba","payload":{"description":"Update docs/agent-tools.md and src/plugin/index.ts to explain that lcm_expand_query(allConversations: true) performs bounded multi-conversation synthesis, while lcm_grep remains the cheaper global discovery tool.","priority":"2","title":"Document bounded cross-conversation expand_query guidance","type":"task"}}
+{"type":"rename","timestamp":"2026-04-06T14:15:21.594996Z","issue_id":"lossless-claw-87a","payload":{"new_id":"lossless-claw-386.1"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:21.594996Z","issue_id":"lossless-claw-386.1","payload":{"dep_type":"parent-child","depends_on":"lossless-claw-386"}}
+{"type":"rename","timestamp":"2026-04-06T14:15:29.957985Z","issue_id":"lossless-claw-19e","payload":{"new_id":"lossless-claw-386.2"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:29.957985Z","issue_id":"lossless-claw-386.2","payload":{"dep_type":"parent-child","depends_on":"lossless-claw-386"}}
+{"type":"rename","timestamp":"2026-04-06T14:15:31.864038Z","issue_id":"lossless-claw-fba","payload":{"new_id":"lossless-claw-386.3"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:31.864038Z","issue_id":"lossless-claw-386.3","payload":{"dep_type":"parent-child","depends_on":"lossless-claw-386"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:37.393868Z","issue_id":"lossless-claw-386","payload":{"dep_type":"blocks","depends_on":"lossless-claw-386.1"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:37.394202Z","issue_id":"lossless-claw-386","payload":{"dep_type":"blocks","depends_on":"lossless-claw-386.2"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:46.971936Z","issue_id":"lossless-claw-386","payload":{"dep_type":"blocks","depends_on":"lossless-claw-386.2"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:48.98809Z","issue_id":"lossless-claw-386","payload":{"dep_type":"blocks","depends_on":"lossless-claw-386.3"}}
+{"type":"dep_add","timestamp":"2026-04-06T14:15:50.933372Z","issue_id":"lossless-claw-386.1","payload":{"dep_type":"blocks","depends_on":"lossless-claw-386.2"}}
+{"type":"status_update","timestamp":"2026-04-06T14:16:32.251088Z","issue_id":"lossless-claw-386.2","payload":{"status":"in_progress"}}
+{"type":"close","timestamp":"2026-04-06T14:26:02.770142Z","issue_id":"lossless-claw-386.2","payload":{}}
+{"type":"status_update","timestamp":"2026-04-06T14:27:24.579657Z","issue_id":"lossless-claw-386.1","payload":{"status":"in_progress"}}
+{"type":"close","timestamp":"2026-04-06T14:28:34.221538Z","issue_id":"lossless-claw-386.1","payload":{}}
+{"type":"status_update","timestamp":"2026-04-06T14:29:12.151683Z","issue_id":"lossless-claw-386.3","payload":{"status":"in_progress"}}
+{"type":"close","timestamp":"2026-04-06T14:29:31.220628Z","issue_id":"lossless-claw-386.3","payload":{}}
+{"type":"close","timestamp":"2026-04-06T14:29:38.14415Z","issue_id":"lossless-claw-386","payload":{}}
